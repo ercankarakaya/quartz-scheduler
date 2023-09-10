@@ -1,5 +1,6 @@
 package com.ercan.service;
 
+import com.ercan.job.SimpleJob;
 import org.quartz.*;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,7 +15,7 @@ public class SchedulerService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-
+       // scheduleJob(SimpleJob.class,"simpleJob","SimpleJobGroup","* 0/2 * ? * *");
     }
 
     /**  Registers a job without a Trigger */

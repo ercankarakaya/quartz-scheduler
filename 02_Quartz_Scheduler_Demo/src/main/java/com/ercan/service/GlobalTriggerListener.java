@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class QuartzTriggerListener implements TriggerListener {
+public class GlobalTriggerListener implements TriggerListener {
 
 
     @Override
     public String getName() {
-        return "globalTrigger";
+        return "GlobalTriggerListener";
     }
 
     @Override

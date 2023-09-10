@@ -8,12 +8,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 @Slf4j
-public class JobsListener implements JobListener {
+public class GlobalJobListener implements JobListener {
 
 
     @Override
     public String getName() {
-        return "globalJob";
+        return "GlobalJobListener";
     }
 
     @Override

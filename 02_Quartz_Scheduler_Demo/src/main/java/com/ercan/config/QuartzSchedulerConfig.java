@@ -1,16 +1,12 @@
 package com.ercan.config;
 
-import com.ercan.service.JobsListener;
-import com.ercan.service.QuartzTriggerListener;
+import com.ercan.service.GlobalJobListener;
+import com.ercan.service.GlobalTriggerListener;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
-import org.springframework.boot.autoconfigure.quartz.QuartzDataSource;
-import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.scheduling.quartz.SchedulerFactoryBean;
 
@@ -23,15 +19,14 @@ import java.util.Properties;
 public class QuartzSchedulerConfig {
 
     private DataSource dataSource;
-
     private ApplicationContext applicationContext;
-
-    private QuartzTriggerListener triggerListener;
-
-    private JobsListener jobsListener;
+    private GlobalTriggerListener triggerListener;
+    private GlobalJobListener jobsListener;
 
 
-
+    /**
+     * Create Scheduler
+     */
     @Bean
     public SchedulerFactoryBean schedulerFactoryBean() throws IOException {
         SchedulerFactoryBean factoryBean = new SchedulerFactoryBean();
@@ -51,6 +46,9 @@ public class QuartzSchedulerConfig {
         return factoryBean;
     }
 
+    /**
+     * Configure quartz using properties file
+     */
     @Bean
     public Properties quartzProperties() throws IOException {
         PropertiesFactoryBean propertiesFactoryBean = new PropertiesFactoryBean();
